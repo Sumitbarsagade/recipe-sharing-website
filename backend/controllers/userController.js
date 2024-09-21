@@ -24,6 +24,7 @@ exports.registerUser = async (req, res) => {
 
     res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
+    console.log(error)
     res.status(500).json({ message: 'Server error' });
   }
 };
@@ -34,6 +35,7 @@ exports.getUsers = async (req, res) => {
     const users = await User.find();
     res.json(users);
   } catch (error) {
+    console.log(error)
     res.status(500).json({ message: 'Server error' });
     
   }
@@ -51,7 +53,7 @@ exports.getUserProfile = async (req, res) => {
 
     res.json({ name: user.username, email: user.email });
   } catch (error) {
-    
+    console.log(error)
     res.status(500).json({ message: 'Server error', error });
   }
 };
@@ -62,7 +64,7 @@ exports.getUserRecipes = async (req, res) => {
     const recipes = await Recipe.find({ userid: req.user._id });  // Assuming Recipe model exists
     res.json(recipes);
   } catch (error) {
-   
+    console.log(error)
     res.status(500).json({ message: 'Server error', error });
   }
 };
