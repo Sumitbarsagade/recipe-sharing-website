@@ -1,7 +1,7 @@
 import {React,useState }from 'react'
 import image from "../assets/recipebook.jpg"
 import { Link, useNavigate } from 'react-router-dom'
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 
 
 
@@ -32,7 +32,7 @@ export default function SignUp() {
     }
     
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/signup', {
+      const response = await axiosInstance.post('/api/auth/signup', {
         username: user.username,
         password: user.password,
         email: user.email

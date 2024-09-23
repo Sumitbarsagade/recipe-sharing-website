@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 import { useParams, useNavigate } from 'react-router-dom';
 
 
@@ -20,7 +20,7 @@ export default function RecipeDashboardRecipeDetail() {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/recipes/${id}`);
+        const response = await axiosInstance.get(`/api/recipes/${id}`);
         setRecipe(response.data); // Set the current recipe in state
       } catch (error) {
         console.error('Error fetching recipe:', error);

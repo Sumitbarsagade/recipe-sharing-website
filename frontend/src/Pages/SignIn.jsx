@@ -2,7 +2,7 @@ import {React,useState }from 'react'
 import image from "../assets/recipebook.jpg"
 import { Link, useNavigate } from 'react-router-dom'
 import ForgetPasswordModel from '../Components/ForgetPasswordModel';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 
 
 const SignIn = () => {
@@ -41,7 +41,7 @@ const SignIn = () => {
   const handleForgotPassword = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/forgot-password', { email });
+      const response = await axiosInstance.post('/api/auth/forgot-password', { email });
       setMessage(response.data.message);
     } catch (error) {
       setMessage('Error sending reset email');
@@ -54,7 +54,7 @@ const SignIn = () => {
    
     
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/signin', {
+      const response = await axiosInstance.post('/api/auth/signin', {
         email: user.email,
         password: user.password,
    

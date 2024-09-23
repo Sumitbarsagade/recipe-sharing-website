@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 import { useParams, useNavigate } from 'react-router-dom';
 import Dashboard from '../Components/Dashboard';
 
@@ -28,7 +28,7 @@ export default function EditRecipe() {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/recipes/${id}`);
+        const response = await axiosInstance.get(`/api/recipes/${id}`);
         const recipe = response.data;
        setPreviewSource(recipe.imageUrl)
         // Populate form with the fetched recipe data
@@ -84,7 +84,7 @@ export default function EditRecipe() {
     }
   
     try {
-      const response = await axios.put(`http://localhost:5000/api/recipes/${id}`, data, {
+      const response = await axiosInstance.put(`http://localhost:5000/api/recipes/${id}`, data, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import DeleteModal from '../Components/DeleteModal';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 import Endbutton from '../Components/Endbutton';
 export default function ViewRecipe() {
   const [user, setUser] = useState(null);
   const [message,setMessage] = useState();
+  const [signInMessage,setSignInMessage] = useState(false);
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedRecipe, setSelectedRecipe] = useState(null);  // For the modal
@@ -16,7 +17,7 @@ export default function ViewRecipe() {
     const token = localStorage.getItem('token');  // Get the token from localStorage
     try {
       // Make API call to delete recipe
-      await axios.delete(`http://localhost:5000/api/recipes/${recipeId}`, {
+      await axiosInstance.delete(`/api/recipes/${recipeId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -44,14 +45,14 @@ export default function ViewRecipe() {
         const token = localStorage.getItem('token'); // Get the token from localStorage
        
         // Fetch user data (assumed endpoint: /api/user/profile)
-        const userResponse = await axios.get('http://localhost:5000/api/user/profile', {
+        const userResponse = await axiosInstance.get('/api/user/profile', {
           headers: { Authorization: `Bearer ${token}` },
         });
        console.log(userResponse)
         setUser(userResponse.data); // Set user data
 
         // Fetch user's recipes (assumed endpoint: /api/user/recipes)
-        const recipeResponse = await axios.get('http://localhost:5000/api/user/recipes', {
+        const recipeResponse = await axiosInstance.get('/api/user/recipes', {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -61,12 +62,13 @@ export default function ViewRecipe() {
         }
         else{
           setMessage("No Recipe Found")
+       
         }
         setRecipes(recipeResponse.data); // Set recipes data
         setLoading(false);
       } catch (error) {
         console.error('Error fetching user data or recipes:', error);
-
+        setSignInMessage(true)
         setLoading(false);
       }
     };
@@ -77,8 +79,8 @@ export default function ViewRecipe() {
  
 
   return (
-  <div className="  flex-grow h-lvh overflow-y-scroll no-scrollbar pb-2 relative    bg-green-100 p-4 sm:p-6 lg:p-8">
-      <div className=" ml-10  w-[98%]  bg-white rounded-xl shadow-md overflow-hidden p-4  relative  flex flex-col items-center justify-between">
+  <div className="  flex-grow h-lvh overflow-y-scroll no-scrollbar  relative    bg-green-100  sm:p-6 lg:p-8">
+      <div className=" ml-10  w-[98%]  bg-white rounded-xl shadow-md overflow-hidden   relative  flex flex-col items-center justify-between">
 
           <div className="welcomeBox flex items-center justify-between w-full h-52 mt-2 p-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg">
             <h1 className='text-6xl text-white'>Welcome,
@@ -88,10 +90,13 @@ export default function ViewRecipe() {
             <img src="dish.png" alt=""  className='h-44' />
           </div>
 
+ 
+
           <div className="page-title text-5xl w-full h-fit text-start">
           <h1>Your Recipes</h1>
           </div>
         
+         
         
         <div className="w-full text-center p-5 text-lg">
           {recipes.length > 0 ? (
@@ -127,18 +132,18 @@ export default function ViewRecipe() {
            )}
          </div>
           ) : (
-            <p>{message}</p>
+            <div className='w-full m-10' >No recipes Found</div>
           )}
 
 
         </div>
 
 
-        
+        <Endbutton/>
         
       </div>
      
-        <Endbutton/>
+   
 
 
     </div>

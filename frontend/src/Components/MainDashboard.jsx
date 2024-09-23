@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 import Endbutton from './Endbutton';
 export default function MainDashboard() {
   // State to store user data
@@ -15,14 +15,14 @@ export default function MainDashboard() {
         const token = localStorage.getItem('token'); // Get the token from localStorage
        
         // Fetch user data (assumed endpoint: /api/user/profile)
-        const userResponse = await axios.get('http://localhost:5000/api/user/profile', {
+        const userResponse = await axiosInstance.get('/api/user/profile', {
           headers: { Authorization: `Bearer ${token}` },
         });
        console.log(userResponse)
         setUser(userResponse.data); // Set user data
 
         // Fetch user's recipes (assumed endpoint: /api/user/recipes)
-        const recipeResponse = await axios.get('http://localhost:5000/api/user/recipes', {
+        const recipeResponse = await axiosInstance.get('/api/user/recipes', {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -58,9 +58,12 @@ export default function MainDashboard() {
 
             <img src="dish.png" alt=""  className='h-44' />
           </div>
-
-           
-           <p>{signInMessage?   <img src="signinChef.jfif" alt=""  className='h-44' />:"" }</p> 
+   
+        
+     
+           <div>{signInMessage?    <div className='w-full h-lvh flex justify-center items-center' ><img src="signinChef.jfif" alt=""  className='h-44' /></div>:"" }</div> 
+      
+          
     
         <div className="w-full text-center p-5 text-lg">
         <h1 className="text-5xl w-full h-fit text-start">Your Recent Recipe</h1>
@@ -90,7 +93,7 @@ export default function MainDashboard() {
               ))}
             </div>
           ) : (
-            <p>No Recipe Found</p>
+            <div className='w-full m-10'>No Recipe Found</div>
           )}
 
 

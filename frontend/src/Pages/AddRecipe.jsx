@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 import { useNavigate } from 'react-router';
 import Dashboard from '../Components/Dashboard'
 
@@ -53,7 +53,7 @@ export default function AddRecipe() {
 
   
       // Post the recipe data to your backend API
-      const response = await axios.post('http://localhost:5000/api/recipes', data, {
+      const response = await axiosInstance.post('/api/recipes', data, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,

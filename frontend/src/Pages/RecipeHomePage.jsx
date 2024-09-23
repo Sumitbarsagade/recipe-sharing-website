@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 import { Link, useNavigate } from 'react-router-dom';
 import RecipeBoxXL from '../Components/RecipeBoxXL';
 export default function RecipeHomePage() {
@@ -16,7 +16,8 @@ export default function RecipeHomePage() {
     
     const fetchRecipes = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/recipes'); // Adjust your API endpoint
+        setLoading(true);
+        const response = await axiosInstance.get('/api/recipes'); // Adjust your API endpoint
         const fetchedRecipes = response.data;
 
         // Group recipes by type (e.g., Breakfast, Lunch, Dinner)
@@ -65,9 +66,6 @@ export default function RecipeHomePage() {
     }
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div className="min-h-screen flex-grow max-h-lvh overflow-scroll no-scrollbar flex bg-green-200  pt-5 md:pr-2 pr-1 md:pl-32 pl-14 sm:p-2 lg:p-8" onScroll={handleScroll}>
@@ -87,7 +85,7 @@ export default function RecipeHomePage() {
             <div className="searchbox w-full h-auto flex md:gap-16 gap-5 md:px-10 px-12 items-center justify-between overflow-hidden  md:flex-row md:flex-wrap flex-col ">
             {visibleRecipes[type]?.map((recipe) => (
                 <Link className="md:w-96 w-80" to={`/recipes/${recipe._id}`} key={recipe._id}>
-                  <RecipeBoxXL recipe={recipe} />
+                  <RecipeBoxXL recipe={recipe} loading={loading} />
                 </Link>
               ))}
             </div>

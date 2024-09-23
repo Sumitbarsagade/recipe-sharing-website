@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 import { useParams,useNavigate } from 'react-router-dom';
 
 import RecipeDetailButtons from '../Components/RecipeDetailButtons';
@@ -21,7 +21,7 @@ export default function RecipeDetail() {
   useEffect(() => {
     const fetchAllRecipes = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/recipes`);
+        const response = await axiosInstance.get(`/api/recipes`);
         setAllRecipes(response.data); // Set all recipes in state
 
         // Find the index of the current recipe by ID
@@ -39,7 +39,7 @@ export default function RecipeDetail() {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/recipes/${id}`);
+        const response = await axiosInstance.get(`/api/recipes/${id}`);
         setRecipe(response.data); // Set the current recipe in state
       } catch (error) {
         console.error('Error fetching recipe:', error);

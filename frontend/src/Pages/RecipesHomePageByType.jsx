@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 import {useParams, Link, useNavigate } from 'react-router-dom';
 import RecipeBoxXL from '../Components/RecipeBoxXL';
 
@@ -14,7 +14,7 @@ export default function RecipesHomePageByType() {
       
       const fetchRecipes = async () => {
         try {
-          const response = await axios.get('http://localhost:5000/api/recipes'); // Adjust your API endpoint
+          const response = await axiosInstance.get('/api/recipes'); // Adjust your API endpoint
           const fetchedRecipes = response.data;
           const typed_Recies = fetchedRecipes.filter(recipe => recipe.recipeType === type)
           setRecipes(typed_Recies)

@@ -8,6 +8,7 @@ import ChefDescription from '../Components/ChefDescription'
 import Contact from '../Components/Contact'
 import HomeRecipesShowCase from '../Components/HomeRecipesShowCase'
 
+
 export default function Home() {
 
    
@@ -29,6 +30,7 @@ export default function Home() {
 
     <>
     <main className='w-[100vw] h-fit bg-[#74A04B] overflow-x-hidden text-black'>
+      
     <section className='hero  flex items-center p-10 justify-left  ' >
        <div  
       
@@ -59,6 +61,10 @@ export default function Home() {
 
 
     </section>
+  
+    
+
+
 
 
 
@@ -73,14 +79,11 @@ export default function Home() {
          <Recipebox  image={"/recipeImage3.jfif"} title={"Coq au Vin"} description={"Coq au vin is a rich and savory stew made with chicken braised in red wine, lardons (cured pork), mushrooms, and optionally garlic. This dish embodies the rustic elegance of French cuisine, perfect for cozy gatherings or special occasions."} />
     </section>
      
-
-  <section className="cookingImage">
-
+ 
+  
 
 
   
-
-  </section>
    
 
    <section className="w-full md:h-44 h-56 bg-yellow-400 flex flex-row items-center justify-between p-10">
@@ -90,7 +93,7 @@ export default function Home() {
    </section>
 
    <section data-scroll data-scroll-speed="-5" className="video w-full relative h-fit  object-cover bg-fixed">
-   <video autoPlay muted loop src="https://www.mediafire.com/file/t3zgh5hlt0agptt/food.mp4/file" className='object-cover type="audio/mp3"  '></video>
+   <video autoPlay muted loop src="/food.mp4" className='object-cover type="audio/mp3"  '></video>
    </section>
 
 
@@ -98,7 +101,7 @@ export default function Home() {
    <section className="chefs w-full min-h-lvh flex  md:flex-col flex-row flex-wrap gap-10 items-center p-10">
      <h1 className='text-white text-6xl w-fit mx-auto '>Our Chef</h1>
 
-     <div className="description w-11/12 mx-auto flex md:flex-row flex-col gap-10 items-center justify-evenly">
+     <div className="description w-11/12 mx-auto flex md:flex-row flex-col gap-10 items-center flex-wrap justify-evenly">
      <ChefDescription image={"/chef1.jfif"} name={"Mei Ling"} tag={"Work Master"} />
 
      <ChefDescription image={"/chef2.jfif"} name={"Arjun Patel"} tag={"Spice Whisperer"} />
@@ -113,7 +116,7 @@ export default function Home() {
 
 
    <section className="chefs w-full min-h-lvh flex  md:flex-col flex-row flex-wrap gap-10 items-center p-10">
-     <h1 className='text-white text-6xl '>Our Lastest Recipes</h1>
+     <h1 className='text-white text-6xl text-center'>Our Lastest Recipes</h1>
     
 
      
@@ -126,7 +129,7 @@ export default function Home() {
 
 
    <section className="socialmedialinks w-full h-fit p-10 flex items-center justify-end gap-10 flex-col">
-    <h1 className='text-white text-6xl'>Join Our Flavor Adventure!</h1>
+    <h1 className='text-white text-6xl text-center'>Join Our Flavor Adventure!</h1>
 
 
     <ul className="links ">
@@ -135,7 +138,7 @@ export default function Home() {
     <i className="ri-twitter-x-fill text-5xl p-5 text-white"></i>
     </ul>
    </section>
-
+  
    <section className="contact w-full h-fit  ">
      <Contact/>
     

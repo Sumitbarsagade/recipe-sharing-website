@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { IoMdClose } from 'react-icons/io';
 import { FiMail, FiLock, FiKey } from 'react-icons/fi';
-import axios from 'axios';
+import axiosInstance from '../axiosInstance';
 
 export default function ForgetPasswordModel({ closeDeleteForgotPasswordToggleModal }) {
   const [email, setEmail] = useState('');
@@ -15,7 +15,7 @@ export default function ForgetPasswordModel({ closeDeleteForgotPasswordToggleMod
   const handleSendOtp = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/request-otp', { email });
+      const response = await axiosInstance.post('/api/auth/request-otp', { email });
       setMessage(response.data.message);
       setError('');
       setStep(2); // Move to OTP input step
@@ -30,7 +30,7 @@ export default function ForgetPasswordModel({ closeDeleteForgotPasswordToggleMod
     e.preventDefault();
     try {
       // Here you should validate the OTP via the backend
-      const response = await axios.post('http://localhost:5000/api/auth/validate-otp', { email, otp });
+      const response = await axiosInstance.post('/api/auth/validate-otp', { email, otp });
       setMessage(response.data.message);
       setError('');
       setStep(3); // Move to password reset step
@@ -44,7 +44,7 @@ export default function ForgetPasswordModel({ closeDeleteForgotPasswordToggleMod
   const handleResetPassword = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/reset-password', { email, otp, newPassword: password });
+      const response = await axiosInstance.post('/api/auth/reset-password', { email, otp, newPassword: password });
       setMessage(response.data.message);
       setError('');
       closeDeleteForgotPasswordToggleModal(); // Close modal on successful password reset
