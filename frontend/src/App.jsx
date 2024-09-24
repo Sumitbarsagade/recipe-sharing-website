@@ -27,7 +27,7 @@ return(
   <BrowserRouter>
   
   <Navbar/>
-  <main className='max-w-lvw min-h-fit relative bg-[#74A04B] md:pt-0 pt-10 top-0 overflow-hidden z-10'>
+  <main className='max-w-lvw min-h-fit relative bg-[#74A04B]  top-0 overflow-hidden z-10'>
 
   <Routes>
 

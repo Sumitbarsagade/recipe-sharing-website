@@ -54,16 +54,14 @@ export default function RecipesHomePageByType() {
         <div className="w-[98%] h-lvh rounded-xl overflow-scroll no-scrollbar">
   
        
-  
-       
           <div className="container w-full h-fit text-4xl text-green-800 p-10">
             <h1 className='capitalize'>{type}</h1>
           </div>
              
               {/* Recipe Cards */}
-              <div className="searchbox w-full h-auto flex md:gap-16 gap-5 md:px-10 px-12 items-center justify-between overflow-hidden  md:flex-row md:flex-wrap flex-col ">
+              <div className="searchbox w-full h-auto flex  md:px-10 px-12 gap-5 items-center justify-between  md:flex-wrap md:flex-row flex-col ">
               {recipes.map((recipe) => (
-                  <Link className="md:w-96 w-80" to={`/recipes/${recipe._id}`} key={recipe._id}>
+                  <Link  to={`/recipes/${recipe._id}`} key={recipe._id}>
                     <RecipeBoxXL recipe={recipe} />
                   </Link>
                 ))}

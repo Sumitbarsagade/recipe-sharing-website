@@ -10,6 +10,7 @@ import axiosInstance from '../axiosInstance';
 export default function HomeRecipesShowCase() {
   const [recipes, setRecipes] = useState([]); // State to store the fetched recipes
   const [hrloading, setHrLoading] = useState(true);
+  const [recipeLength, setRecipeLength] = useState();
 
    
   // Function to get four random recipes
@@ -23,15 +24,19 @@ export default function HomeRecipesShowCase() {
       try {
         
         setHrLoading(true);
-       
+     
         const response = await axiosInstance.get("/api/recipes"); // Adjust your API endpoint
         
         const fetchedRecipes = response.data;
-
+         
         // Select four random recipes from the fetched data
         const randomRecipes = getRandomRecipes(fetchedRecipes);
         setRecipes(randomRecipes); // Set the selected recipes in state
+       
         setHrLoading(false);
+     
+
+
       } catch (error) {
         setHrLoading(false);
         console.error('Error fetching recipes:', error);
@@ -46,7 +51,7 @@ export default function HomeRecipesShowCase() {
       {recipes.map((recipe, index) => (
         <RecipeBoxXL
           key={index} // Use a unique key for each component
-           recipe={recipe} loading={hrloading}
+           recipe={recipe} loading={hrloading} recipeLength={recipeLength}
         />
       ))}
     </div>

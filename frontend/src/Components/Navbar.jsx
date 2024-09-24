@@ -97,16 +97,18 @@ function Navbar() {
     <>
       
 
-      <nav className="w-lvw fixed bg-green-700 bg-opacity-20 shadow backdrop-filter backdrop-blur-lg  text-white p-4 z-50">
-      <div className="container mx-auto flex items-center justify-between">
+      <nav className="w-full fixed bg-green-700 bg-opacity-20 shadow backdrop-filter backdrop-blur-lg  text-white py-4 px-4 z-50">
+      <div className="container mx-auto  flex items-center  justify-between gap-4">
         {/* Logo */}
-        <Link to="/" className="flex items-center space-x-4">
+        <Link to="/" className="flex items-center mr-5 space-x-4">
           <img src="/newLogo3.png" alt="" srcset="" className='w-10 '  />
           <span className="font-semibold text-xl hidden md:inline">RecipeWorld</span>
         </Link>
 
         {/* Centered Search Bar */}
-        <div className="items-center md:flex hidden p-2 mt-3  md:w-fit sm:w-64 bg-white text-black rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-500">
+        <div className="items-center md:flex hidden p-2 mt-3 mx-2 relative  md:w-fit sm:w-64 bg-white text-black rounded-full shadow-lg hover:shadow-xl transform  ">
+
+
             <div className="flex p-2 w-72 space-x-4 rounded-lg">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -137,10 +139,9 @@ function Navbar() {
             >
               <span>Search</span>
             </div>
-          </div>
 
-          {/* Search results box */}
-          {showSearchBox && (
+ {/* Search results box */}
+ {showSearchBox && (
             <SearchBox
               searchResults={searchResults}
               handleResultClick={handleResultClick}
@@ -148,12 +149,17 @@ function Navbar() {
             />
           )}
 
+            
+          </div>
+
+         
+
 
         {/* Navigation Links */}
         <div className="hidden md:flex items-center text-xl space-x-4">
           <Link to="/recipedashboard/homepage" className=" hover:bg-green-400  rounded-xl p-1">Recipes</Link>
           <Link to="/recipedashboard" className="hover:bg-green-400  rounded-xl p-1">Share Recipes</Link>
-          <Link to="/signin" className="hover:bg-green-400 rounded-xl  p-1">SignIn</Link>
+          <Link to="/signin" className="hover:bg-green-400 rounded-xl  p-1">Sign In</Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -168,9 +174,9 @@ function Navbar() {
         <div className="mt-4 md:hidden">
           <div className="relative mb-4">
             
-          <Link to="/recipedashboard/homepage" className="block py-2 hover:bg-green-400  rounded-xl p-1">Recipes</Link>
-          <Link to="/recipedashboard" className="block py-2 hover:bg-green-400  rounded-xl p-1">Share Recipes</Link>
-          <Link to="/signin" className="block py-2 hover:bg-green-400  rounded-xl p-1">SignIn</Link>
+          <Link to="/recipedashboard/homepage" className="block py-2 hover:bg-green-400  rounded-xl p-2">Recipes</Link>
+          <Link to="/recipedashboard" className="block py-2 hover:bg-green-400  rounded-xl p-2">Share Recipes</Link>
+          <Link to="/signin" className="block py-2 hover:bg-green-400  rounded-xl p-2">Sign In</Link>
 
 
           <div className="items-center mx-auto flex p-2 mt-3  w-96 bg-white text-black rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-500">

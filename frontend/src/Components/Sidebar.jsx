@@ -29,7 +29,7 @@ export default function Sidebar() {
   return (
    
     
-      <div id='sidebar' className={collapsed?"sidebar absolute  flex flex-col z-20 scroll-hidden top-20  w-12  h-lvh border-r":"sidebar  flex flex-col absolute top-20    z-20 left-0 md:w-44 w-36  h-lvh border-r"}>
+      <div id='sidebar' className={collapsed?"sidebar absolute  flex flex-col z-20 scroll-hidden top-20  w-12  h-lvh border-r":"sidebar  flex flex-col absolute top-20    z-20 left-0 md:w-44 w-36 scroll-hidden  h-lvh border-r"}>
         <div className="flex w-full items-center justify-start h-fit border-b">
         
          
