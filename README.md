@@ -32,6 +32,57 @@ User Signin page
 Search Result
 ![Screenshot 2024-09-27 112153](https://github.com/user-attachments/assets/ccf10168-13f2-4e45-ad44-8011ce07f4c2)
 
+file structure:
+```
+recipe-sharing-website/
+│
+├── backend/                            # Backend folder (Node.js, Express)
+│   ├── config/
+│   │   └── db.js                       # MongoDB connection and configuration
+│   ├── controllers/
+│   │   └── authController.js           # Handles authentication (login, signup, password reset)
+│   │   └── recipeController.js         # Handles recipe CRUD operations
+│   ├── middleware/
+│   │   └── authMiddleware.js           # Authentication middleware (JWT protection)
+│   ├── models/
+│   │   └── User.js                     # User Mongoose schema/model
+│   │   └── Recipe.js                   # Recipe Mongoose schema/model
+│   ├── routes/
+│   │   └── authRoutes.js               # Authentication routes (login, signup, forgot password)
+│   │   └── recipeRoutes.js             # Recipe routes (CRUD operations)
+│   ├── uploads/                        # Folder for uploaded images (before they are uploaded to Cloudinary)
+│   ├── .env                            # Environment variables (API keys, database URLs)
+│   ├── server.js                       # Main server file (entry point for Express)
+│   └── package.json                    # Backend dependencies and scripts
+│
+├── frontend/                           # Frontend folder (React.js)
+│   ├── public/
+│   │   └── index.html                  # Main HTML file
+│   ├── src/
+│   │   ├── assets/                     # Images, videos, fonts, etc.
+│   │   │   └── logo.png
+│   │   ├── components/
+│   │   │   └── Navbar.js               # Navbar component
+│   │   │   └── RecipeBox.js            # Recipe card component
+│   │   │   └── LoadingSkeleton.js      # Skeleton loading animation component
+│   │   ├── pages/
+│   │   │   └── Home.js                 # Homepage of the app
+│   │   │   └── SignUp.js               # Signup page
+│   │   │   └── SignIn.js               # Login page
+│   │   │   └── RecipeDetail.js         # Detailed recipe page
+│   │   │   └── RecipeDashboard.js      # User dashboard for managing recipes
+│   │   ├── utils/
+│   │   │   └── axiosInstance.js        # Axios instance with baseURL configuration
+│   │   ├── App.js                      # Main React component
+│   │   ├── index.js                    # React DOM rendering and app entry point
+│   │   └── package.json                # Frontend dependencies and scripts
+│   ├── .env                            # Frontend environment variables
+│   └── README.md                       # Project documentation
+│
+├── .gitignore                          # Files and folders to ignore in Git
+├── package.json                        # Main package.json for the entire project (if applicable)
+└── README.md                           # High-level project description (GitHub)
+```
 🚀 Features
 CRUD Operations: Users can create, read, update, and delete recipes.
 Image Uploading: Users can upload recipe images to Cloudinary.
