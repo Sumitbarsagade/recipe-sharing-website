@@ -32,13 +32,20 @@ Backend is hosted on Render.com: It powers the REST API for all CRUD operations 
 
 🛠️ Technology Stack
 Frontend: React.js, Tailwind CSS
+
 Backend: Node.js, Express.js
+
 Database: MongoDB (via MongoDB Atlas)
+
 Image Hosting: Cloudinary (for image uploads)
+
 Authentication: JWT (JSON Web Tokens)
+
 API Communication: Axios (for making API requests)
+
 Deployment:
 Frontend: Netlify
+
 Backend: Render.com
 
 
