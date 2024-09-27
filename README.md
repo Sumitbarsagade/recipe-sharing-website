@@ -2,6 +2,46 @@ Recipe World 🌍🍴
 
 Recipe World is a full-stack web application where users can view, create, edit, and delete recipes. Users can also upload recipe images, which are stored in Cloudinary, and all recipe data is managed through MongoDB. This website supports complete CRUD operations and is deployed on Netlify.
 
+🌟 Key Features
+1. User Authentication
+Sign Up / Sign In: Users can create an account or log in to an existing account.
+JWT-based Authentication: The app uses JSON Web Tokens (JWT) for secure authentication and session management.
+Forgot Password: Users can reset their passwords by receiving an OTP (One-Time Password) via email.
+2. Recipe Management
+Create New Recipes: Users can submit their own recipes with a title, description, ingredients, procedure steps, and an optional image.
+Read Recipes: Anyone can view available recipes by browsing the homepage or searching by recipe name, ingredients, or type.
+Edit Recipes: Logged-in users can update their submitted recipes.
+Delete Recipes: Users can delete their own recipes if they are no longer needed.
+3. Image Upload with Cloudinary
+Users can upload images for their recipes. The images are stored in Cloudinary, a robust media management platform, which ensures fast loading and optimized image delivery.
+Image Optimization: Images are resized and formatted automatically using Cloudinary’s transformation capabilities to improve performance.
+4. Database Integration with MongoDB
+Recipe details, user information, and all data are stored in a secure MongoDB database.
+Each user can manage their own recipe collection, with access to view, edit, or delete their own contributions.
+5. Fully Responsive UI
+The app is designed with a mobile-first approach and ensures a smooth user experience across different devices, whether on desktop, tablet, or mobile.
+6. Search Functionality
+Users can search for recipes based on the recipe name or ingredients. Matching results are displayed dynamically as the user types, and if no match is found, an appropriate message is shown.
+7. Infinite Scroll & Recipe Filtering
+Recipes are displayed with infinite scrolling for smooth, uninterrupted browsing.
+Recipes are categorized by type (e.g., breakfast, lunch, dinner) and cuisine, with a "View More" button to explore additional recipes in each category.
+8. Hosting & Deployment
+Frontend is deployed on Netlify: Recipe World
+Backend is hosted on Render.com: It powers the REST API for all CRUD operations and user management.
+
+
+🛠️ Technology Stack
+Frontend: React.js, Tailwind CSS
+Backend: Node.js, Express.js
+Database: MongoDB (via MongoDB Atlas)
+Image Hosting: Cloudinary (for image uploads)
+Authentication: JWT (JSON Web Tokens)
+API Communication: Axios (for making API requests)
+Deployment:
+Frontend: Netlify
+Backend: Render.com
+
+
 Live Website: [https:recipeworld.site](https://recipeworld.site/)
 
 
